@@ -34,7 +34,7 @@ if(NODE_ENV !== 'production') {
 };
 
 app.get('/', (req, res) => {
-    res.send('Hello, benrinote!')
+    res.send('Hello, from the benrinote api!')
 });
 
 app.use(function errorHandler(error, req, res, next) {
