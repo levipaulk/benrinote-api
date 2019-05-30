@@ -33,9 +33,13 @@ if(NODE_ENV !== 'production') {
   }));
 };
 
-app.get('/', (req, res) => {
-    res.send('Hello, from the benrinote api!')
-});
+// app.get('/', (req, res) => {
+//     res.send('Hello, from the benrinote api!')
+// });
+
+app.get('/api/*', (req, res) => {
+  res.json({ok:true})
+})
 
 app.use(function errorHandler(error, req, res, next) {
     let response;
