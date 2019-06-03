@@ -9,6 +9,8 @@ const winston = require('winston');
 const authRouter = require('./auth/auth-router');
 const usersRouter = require('./users/users-router');
 const userpubRouter = require('./userpub/userpub-router');
+const pubRouter = require('./publications/publications-router');
+const notesRouter = require('./notes/notes-router');
 
 const app = express();
 
@@ -43,6 +45,8 @@ if(NODE_ENV !== 'production') {
 app.use('/api/auth', authRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/userpub', userpubRouter)
+app.use('/api/publications', pubRouter)
+app.use('/api/notes', notesRouter)
 
 app.use(function errorHandler(error, req, res, next) {
     let response;

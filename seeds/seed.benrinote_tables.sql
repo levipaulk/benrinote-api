@@ -62,7 +62,7 @@ VALUES
   (5, 2, 'Second Section', 'It is a long established fact that a reader will be...It is a long established fact that a reader will be...It is a long established fact that a reader will be...It is a long established fact that a reader will be...It is a long established fact that a reader will be...'),
   (5, 3, 'Third Section', 'It is a long established fact that a reader will be...It is a long established fact that a reader will be...It is a long established fact that a reader will be...It is a long established fact that a reader will be...It is a long established fact that a reader will be...');
 
-INSERT INTO benrinote_notes (user_id, pub_id, sec_id, text)
+INSERT INTO benrinote_notes (user_id, pub_id, section, text)
 VALUES
   (1, 2, 1, 'Test notes for USER 1s PUBLICATION 2s SECTION 1 NOTES'),
   (1, 2, 2, 'Test notes for USER 1s PUBLICATION 2s SECTION 2 NOTES'),

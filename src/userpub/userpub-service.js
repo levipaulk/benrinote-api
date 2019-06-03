@@ -15,6 +15,7 @@ const UserPubService = {
         'pub.title',
         'pub.cover'
       )
+      .orderBy('up.date_created')
   },
 
   getUserInfo(db, userId) {
@@ -25,23 +26,28 @@ const UserPubService = {
       .first()
   },
 
-  getById(db, id) {
-    return UserPubService.getUserPub(db, userId)
-      .where('up.pub_id', id)
-      .first()
+  userPubByUserId(db, user_id) {
+    return db
+      .from('user_pub')
+      .select('pub_id')
+      .where('user_id', user_id)
   },
 
-  insertUserPub(db, newUserPub) {
-    return db
-      .insert(newUserPub)
-      .into('user_pub')
+  // bob(db, userId, pubId) {
+  //   return db.into('user_pub').insert({ 'user_id': userId, 'pub_id': pubId })
+  // },
+
+  insertUserPub(db, user_id, pub_id) {
+    console.log(`about to insert ${user_id} and ${pub_id} into user_pub`)
+    return db('user_pub').insert({user_id, pub_id})
   },
 
   deleteUserPub(db, user_id, pub_id) {
     return db
+      .from('user_pub')
       .where({
-        user_id,
-        pub_id
+        user_id: user_id,
+        pub_id: pub_id
       })
       .delete()
   },
