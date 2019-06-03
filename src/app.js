@@ -4,8 +4,11 @@ const morgan = require('morgan');
 const cors = require('cors');
 const corsOptions = require('./cors-whitelist');
 const helmet = require('helmet');
-const { NODE_ENV } = require('./config')
+const { NODE_ENV } = require('./config');
 const winston = require('winston');
+const authRouter = require('./auth/auth-router');
+const usersRouter = require('./users/users-router');
+const userpubRouter = require('./userpub/userpub-router');
 
 const app = express();
 
@@ -37,9 +40,9 @@ if(NODE_ENV !== 'production') {
 //     res.send('Hello, from the benrinote api!')
 // });
 
-app.get('/api/*', (req, res) => {
-  res.json({ok:true})
-})
+app.use('/api/auth', authRouter)
+app.use('/api/users', usersRouter)
+app.use('/api/userpub', userpubRouter)
 
 app.use(function errorHandler(error, req, res, next) {
     let response;
