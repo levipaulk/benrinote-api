@@ -3,8 +3,9 @@ const xss = require('xss');
 const PubService = {
   getPubs(db) {
     return db
-      .from('benrinote_publications')
-      .select('*')
+      .from('benrinote_publications As p')
+      .leftJoin('benrinote_users AS u', 'p.author_id', 'u.id')
+      .select('p.id', 'p.title', 'p.cover', 'p.summary', 'u.user_name AS author')
   },
 
   getPub(db, pub_id) {
@@ -25,10 +26,7 @@ const PubService = {
       title: xss(pub.title),
       cover: xss(pub.cover),
       summary: xss(pub.summary),
-      date_created: pub.date_created,
-      date_modified: pub.date_modified,
-      author_id: pub.author_id,
-      publisher_id: pub.publisher_id
+      author: xss(pub.author),
     }
   }
 }

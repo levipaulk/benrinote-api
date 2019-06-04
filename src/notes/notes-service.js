@@ -3,13 +3,11 @@ const xss = require('xss');
 const NotesService = {
   getNotesByPubId(db, userId, pubId) {
     return db
-    .distinct('n.id', 'n.pub_id', 'n.text', 'n.section', 's.title')
-    .from('benrinote_notes AS n')
-    .innerJoin('benrinote_sections As s', 'n.pub_id', 's.pub_id')
-    .where('n.user_id', userId)
-    .andWhere('s.pub_id', pubId)
-    .andWhere('n.pub_id', pubId)
-    .orderBy('n.section')
+      .distinct('n.id', 'n.pub_id', 'n.text', 'n.section', 's.title')
+      .from('benrinote_notes AS n')
+      .leftJoin('benrinote_sections As s', 'n.section', 's.section')
+      .where({ 'n.user_id': userId, 's.pub_id': pubId, 'n.pub_id': pubId})
+      .orderBy('n.section')
   },
 
   createNewNotes(db, userId, pubId) {

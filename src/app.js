@@ -11,6 +11,7 @@ const usersRouter = require('./users/users-router');
 const userpubRouter = require('./userpub/userpub-router');
 const pubRouter = require('./publications/publications-router');
 const notesRouter = require('./notes/notes-router');
+const sectionsRouter = require('./sections/sections-router');
 
 const app = express();
 
@@ -47,6 +48,7 @@ app.use('/api/users', usersRouter)
 app.use('/api/userpub', userpubRouter)
 app.use('/api/publications', pubRouter)
 app.use('/api/notes', notesRouter)
+app.use('/api/sections', sectionsRouter)
 
 app.use(function errorHandler(error, req, res, next) {
     let response;
