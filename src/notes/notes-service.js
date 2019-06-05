@@ -10,9 +10,38 @@ const NotesService = {
       .orderBy('n.section')
   },
 
-  createNewNotes(db, userId, pubId) {
+  userPubByUserId(db, user_id) {
     return db
-      .insert()
+      .from('user_pub')
+      .select('pub_id')
+      .where('user_id', user_id)
+  },
+
+  NotesExisty(db, user_id, pub_id) {
+    console.log(user_id, pub_id)
+    return db
+      .from('benrinote_notes')
+      .select('*')
+      .where({ user_id, pub_id })
+  },
+
+  createNewNote(db, user_id, pub_id, section) {
+    return db
+      .insert({ user_id, pub_id, section })
+      .into('benrinote_notes')
+      .then(res => console.log(`inserted note for User Id ${user_id}, Pub Id ${pub_id}, Section ${section}`))
+  },
+
+  deleteNotes(db, user_id, pub_id) {
+    return db
+      .from('benrinote_notes')
+      .where({ user_id, pub_id })
+      .delete()
+      .then(res => console.log(`(from NotesService)deleted notes for User Id ${user_id}, Pub Id ${pub_id}`))
+  },
+
+  updateNote(db, id, text) {
+    return db('benrinote_notes').where({ id }).update({ text })
   },
 
   getPub(db, pub_id) {

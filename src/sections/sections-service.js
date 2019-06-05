@@ -12,6 +12,17 @@ const SectionsService = {
     .orderBy('s.section')
   },
 
+  getOrderByPubId(db, pubId) {
+    return db
+    .distinct('s.section')
+    .from('benrinote_sections AS s')
+    .where('s.pub_id', pubId)
+    // .where('n.user_id', userId)
+    // .andWhere('s.pub_id', pubId)
+    // .andWhere('n.pub_id', pubId)
+    .orderBy('s.section')
+  },
+
   serializeSections(sec) {
     return sec.map(this.serializeSection)
   },

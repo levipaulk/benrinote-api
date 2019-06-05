@@ -1,17 +1,31 @@
-# Express Boilerplate!
+# benrinote-api [github page](https://github.com/levipaulk/benrinote-api)
 
-This is a boilerplate project used for starting new projects!
+This is the api for a note-taking react-application, [Benrinote](https://github.com/levipaulk/benrinote-app).
+
+After registration and login, the user can:
+1. Browse from a list of available ==Publications==
+2. View their list of ==Publications== on their ==Dashboard==
+3. Read any of their ==Publications== 
+  + ==Publications== are divided into ==Sections==
+4. Take ==Notes== on individual ==Sections==
+  + Each ==Section== has an associated section of ==Notes==
+  + ==Notes== are generated in the database when a User adds a ==Publication== to their ==Dashboard==
+  + ==Notes== are saved to the database through an onBlur event
+  + As a failsafe, the User's last-edited ==Note== is saved in Local Memory
+    + When either the ==Publication== or ==Compiled Notes== are about to be mounted,
+    + The application will check for any unsaved note, saving it to the database if found
+5. View their ==Notes==, grouped by ==Publication==
 
 ## Set up
 
 Complete the following steps to start a new project (NEW-PROJECT-NAME):
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
+1. Clone this repository to your local machine `git clone https://github.com/levipaulk/benrinote-api.git NEW-PROJECTS-NAME`
 2. `cd` into the cloned repository
 3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
 4. Install the node dependencies `npm install`
 5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "benrinote-api",`
 
 ## Scripts
 
@@ -29,22 +43,25 @@ When your new project is ready for deployment, add a new Heroku application with
 
 ## Thingful Server
 # Setting Up
--Install dependencies: npm install
--Create development and test databases: createdb thingful, createdb thingful-test
--Create database user: createuser thingful
+-Install dependencies: `npm install`
+-Create development and test databases: `createdb benrinote`, `createdb benrinotetest`
+-Create database user: `createuser <username>`
 -Grant privileges to new user in psql:
---GRANT ALL PRIVILEGES ON DATABASE thingful TO thingful
---GRANT ALL PRIVILEGES ON DATABASE "thingful-test" TO thingful
--Prepare environment file: cp example.env .env
+--`GRANT ALL PRIVILEGES ON DATABASE benrinote TO <username>`
+--`GRANT ALL PRIVILEGES ON DATABASE benrinotetest TO <username>`
+-Prepare environment file: `cp example.env .env`
 --Replace values in .env with your custom values if necessary.
--Bootstrap development database: MIGRATION_DB_NAME=thingful npm run migrate
--Bootstrap test database: MIGRATION_DB_NAME=thingful-test npm run migrate
---To revert: MIGRATION_DB_NAME=thingful-test npm run migrate -- 0
+-Bootstrap development database: `MIGRATION_DB_NAME=benrinote npm run migrate`
+--To revert: `MIGRATION_DB_NAME=benrinote npm run migrate -- 0`
+-Bootstrap test database: `MIGRATION_DB_NAME=benrinotetest npm run migrate`
+--To revert: `MIGRATION_DB_NAME=benrinotetest npm run migrate -- 0`
+
 # Seeds
--In command line psql -U <username> -d thingful -f ./path/to/blogful-api-auth/seeds/seed.thingful_tables.sql a. seed for main db
-# Note for Windows users
--Migration files have columns with TIMESTAMP WITH TIME ZONE instead of TIMESTAMP
---This should hopefully allow you to pass tests involving TIMESTAMP columns
+-Add dummy data to main database
+--In command line `psql -U <username> -d benrinote -f ./path-to-benrinote-api/seeds/seed.benrinote_tables.sql`
+-Remove data from main database
+--In command line `psql -U <username> -d benrinote -f ./path-to-benrinote-api/seeds/trunc.benrinote_tables.sql`
+
 # Configuring Postgres
 -For tests involving time to run properly, your Postgres database must be configured to run in the UTC timezone.
 --Locate the postgresql.conf file for your Postgres installation.
@@ -58,10 +75,7 @@ datestyle = 'iso, mdy'
 timezone = 'UTC'
 #timezone_abbreviations = 'Default'     # Select the set of available time zone
 
-# Sample Data
--To seed the database for development: psql -U thingful -d thingful -a -f seeds/seed.thingful_tables.sql
--To clear seed data: psql -U thingful -d thingful -a -f seeds/trunc.thingful_tables.sql
-
-# Scripts
--Start application for development: npm run dev
--Run tests: npm test
+# F.A.Q
+-"What does 'benrinote' mean?"
+  + benri, a.k.a. べんり or 便利, roughly translates to 'convenient'
+  + benri is more-or-less pronounced as 'ben-ree'
