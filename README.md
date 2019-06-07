@@ -1,6 +1,9 @@
-# benrinote-api [github page](https://github.com/levipaulk/benrinote-api)
+# benrinote-api 
 
-This is the api for a note-taking react-application, [Benrinote](https://github.com/levipaulk/benrinote-app).
+This is the api for a note-taking react-application.
+[Benrinote api github](https://github.com/levipaulk/benrinote-api)
+[Benrinote app github](https://github.com/levipaulk/benrinote-app)
+[Live](https://levi-benrinote-app.now.sh/)
 
 After registration and login, the user can:
 1. Browse from a list of available ==Publications==
@@ -82,6 +85,29 @@ datestyle = 'iso, mdy'
 #intervalstyle = 'postgres'
 timezone = 'UTC'
 #timezone_abbreviations = 'Default'     # Select the set of available time zone
+
+# Technologies
+
++ This is a Express project, built using Nodejs
+
++ Node Modules used for this project:
+  + bcryptjs
+  + cors
+  + dotenv
+  + express
+  + helmet
+  + jsonwebtoken
+  + knex
+  + morgan
+  + pg
+  + treeize
+  + winston
+  + xss
+  + chai
+  + mocha
+  + nodemon
+  + postgrator-cli
+  + supertest
 
 # F.A.Q
 -"What does 'benrinote' mean?"
