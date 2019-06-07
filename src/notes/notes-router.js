@@ -107,7 +107,7 @@ notesRouter
     console.log(`(from NotesRouter) Get Note ID ${req.params.id} Request from ${req.user.id}`)
     NotesService.getPub(
       req.app.get('db'),
-      req.params.pub_id
+      req.params.id
     )
       .then(pub => {
         console.log(pub)
@@ -117,9 +117,9 @@ notesRouter
   })
   .patch(jsonBodyParser, (req, res, next) => {
     console.log(`(from NotesRouter) Patch Note ID ${req.params.id} Request from ${req.user.id}`)
-    if (!req.body.text) {
-      return res.status(400).send(`'text' is required`)
-    }
+    // if (!req.body.text) {
+    //   return res.status(400).json(`'text' is required`)
+    // }
     NotesService.updateNote(
       req.app.get('db'),
       xss(req.params.id),

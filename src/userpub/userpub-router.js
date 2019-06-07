@@ -36,31 +36,6 @@ userpubRouter
         res.status(204).end()
       })
       .catch(next)
-    // UserPubService.userPubByUserId(
-    //   req.app.get('db'),
-    //   req.user.id
-    // )
-    //   .then(pub => {
-    //     console.log(pub)
-    //     const existy = pub.filter(p => p.pub_id == req.params.pub_id)
-    //     console.log(existy)
-    //     if(existy[0])
-    //       return res.status(400).json({
-    //         error: 'User_Pub already exists'
-    //       })
-    //   })
-    //   .then(() => {
-    //     console.log(`about to insert new userpub: ${req.user.id}, ${req.params.pub_id}`)
-    //     UserPubService.insertUserPub(
-    //       req.app.get('db'),
-    //       req.user.id,
-    //       req.params.pub_id
-    //     )
-    //   })
-    //   .then(() => {
-    //     res.status(201).end()
-    //   })
-    //   .catch(next)
   })
   .delete((req, res, next) => {
     UserPubService.deleteUserPub(
@@ -72,32 +47,6 @@ userpubRouter
         res.status(204).end()
       })
       .catch(next)
-    // UserPubService.userPubByUserId(
-    //   req.app.get('db'),
-    //   req.user.id
-    // )
-    //   .then(pub => {
-    //     console.log(pub)
-    //     const existy = pub.filter(p => p.pub_id == req.params.pub_id)
-    //     console.log(existy)
-    //     if(!existy)
-    //       return res.status(400).json({
-    //         error: 'User_Pub does not exists'
-    //       })
-    //   })
-    //   .then(() => {
-    //     console.log('about to delete userpub from db')
-    //     UserPubService.deleteUserPub(
-    //       req.app.get('db'),
-    //       req.user.id,
-    //       req.params.pub_id
-    //     )
-    //   })
-    //   .then(() => {
-    //     console.log('userpub deleted')
-    //     res.status(204).end()
-    //   })
-    //   .catch(next)
   })
 
 userpubRouter
