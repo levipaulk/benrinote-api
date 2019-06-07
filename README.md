@@ -1,9 +1,9 @@
 # benrinote-api 
 
 This is the api for a note-taking react-application.
-[Benrinote api github](https://github.com/levipaulk/benrinote-api)
-[Benrinote app github](https://github.com/levipaulk/benrinote-app)
-[Live](https://levi-benrinote-app.now.sh/)
+  + [Benrinote api github](https://github.com/levipaulk/benrinote-api)
+  + [Benrinote app github](https://github.com/levipaulk/benrinote-app)
+  + [Live](https://levi-benrinote-app.now.sh/)
 
 After registration and login, the user can:
 1. Browse from a list of available **Publications**
