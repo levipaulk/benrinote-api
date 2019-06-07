@@ -58,9 +58,17 @@ When your new project is ready for deployment, add a new Heroku application with
 
 # Seeds
 -Add dummy data to main database
+
 --In command line `psql -U <username> -d benrinote -f ./path-to-benrinote-api/seeds/seed.benrinote_tables.sql`
 -Remove data from main database
+--From inside the database: `\i ./path-to-benrinote-api/seeds/seed.benrinote_tables.sql`
+
 --In command line `psql -U <username> -d benrinote -f ./path-to-benrinote-api/seeds/trunc.benrinote_tables.sql`
+--From inside the database: `\i ./path-to-benrinote-api/seeds/trunc.benrinote_tables.sql`
+
+-Example User (included in seed data)
+--Username: dunder
+--Password: password
 
 # Configuring Postgres
 -For tests involving time to run properly, your Postgres database must be configured to run in the UTC timezone.
