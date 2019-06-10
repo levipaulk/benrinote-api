@@ -5,11 +5,39 @@ This is the api for a note-taking react-application.
   + [Benrinote app github](https://github.com/levipaulk/benrinote-app)
   + [Live](https://levi-benrinote-app.now.sh/)
 
+## Summary
+
++ BenriNote is a note management application, that is currently in alpha. 
+  + In its current build...
+    + A user can select from a list of *Publications* and add them to their *Dashboard*.  
+      + BenriNote creates a set of blank notes after the user adds the *Publication* to their *Dashboard*.
+      + BenriNote creates an individual note for each *Section* of a given *Publication* in order to avoid 'spaghetti notes™'.
+    + From the *Dashboard*, the user can...
+      + Read and take notes on a *Publication*.
+      + Remove a *Publication* from their *Dashboard*.
+        + Doing so will DELETE all of their notes associated with said *Publication*.
+      + View/Edit all of their notes for each *Publication*.
+  + Primary Features include:
+    + Organizing notes through direct correlation with the source material ( *Publications* ).
+    + Organizing a user's list of *Publications* by date-added.
+    + Allowing a user to take notes as they read, all on the same screen.
+    + Saving notes to the database periodically (onBlur)
+    + Saving a backup of the last edited note in local storage, in case the onBlur method fails to save the note to the database for whatever reason.
+    
+
+## Features
+
 After registration and login, the user can:
+
 1. Browse from a list of available **Publications**
+<img src="./src/images/Publications-screenshot.png" width="134" height="200" alt="Screenshot of the Publications Page">
 2. View their list of **Publications** on their **Dashboard**
+<img src="./src/images/Dashboard-screenshot.png" width="134" height="200" alt="Screenshot of a user's Dashboard Page">
+
 3. Read any of their **Publications** 
   + **Publications** are divided into **Sections**
+<img src="./src/images/Publication-screenshot.png" width="134" height="200" alt="Screenshot of a specific Publication's Page">
+
 4. Take **Notes** on individual **Sections**
   + Each **Section** has an associated section of **Notes**
   + **Notes** are generated in the database when a User adds a **Publication** to their **Dashboard**
@@ -17,7 +45,15 @@ After registration and login, the user can:
   + As a failsafe, the User's last-edited **Note** is saved in Local Memory
     + When either the **Publication** or **Compiled Notes** are about to be mounted,
     + The application will check for any unsaved note, saving it to the database if found
+<img src="./src/images/CompiledNotes-screenshot.png" width="134" height="200" alt="Screenshot of a specific Publication's notes Page">
+
 5. View their **Notes**, grouped by **Publication**
+<img src="./src/images/Delete-Dashboard-screenshot.png" width="134" height="200" alt="Screenshot of a user's Dahsboard Page with the Confirm Delete Message on display">
+
+## Test User
+
++ Username: dunder
++ Password: password
 
 ## Set Up
 
@@ -68,10 +104,6 @@ When your new project is ready for deployment, add a new Heroku application with
 + Remove data from main database
   + In command line `psql -U <username> -d benrinote -f ./path-to-benrinote-api/seeds/trunc.benrinote_tables.sql`
   + From inside the database: `\i ./path-to-benrinote-api/seeds/trunc.benrinote_tables.sql`
-
-+ Example User (included in seed data)
-  + Username: dunder
-  + Password: password
 
 # Configuring Postgres
 + For tests involving time to run properly, your Postgres database must be configured to run in the UTC timezone.
